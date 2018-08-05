@@ -1,2 +1,2 @@
 # http-request-discovery
-Nodejs backend application discovers details information about http request.
+Nodejs backend or aws serverless application discovers details about http request.
