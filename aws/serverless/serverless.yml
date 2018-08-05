@@ -1,0 +1,33 @@
+service: serverless-geoip
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 256
+  timeout: 30
+  region: eu-central-1
+
+package:
+  exclude:
+    - .gitignore
+    - package.json
+    - package-lock.json
+
+functions:
+  lookup:
+    handler: src/country.run
+    events:
+      - http:
+          method: GET
+          path: /ip/{ip}
+          integration: lambda
+          request:
+            parameters:
+              paths:
+                ip: true
+            template:
+              application/json: '{ "ip" : "$input.params(''ip'')" }'
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.json('$')

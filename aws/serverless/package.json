@@ -1,0 +1,21 @@
+{
+  "name": "ip-country-discovery",
+  "version": "1.0.0",
+  "description": "Testing aws lambda",
+  "main": "index.js",
+  "dependencies": {
+    "maxmind": "2.7.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.29"
+  },
+  "scripts": {
+    "deploy": "sls deploy"
+  },
+  "keywords": [
+    "serverless",
+    "geoip"
+  ],
+  "author": "Vladimir Klymniuk",
+  "license": "MIT"
+}
