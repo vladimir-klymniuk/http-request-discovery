@@ -1,0 +1,12 @@
+export default {
+    default_tier: "tier-1",
+    "tier-1": [
+        "UKR"
+    ],
+    "tier-2": [
+        "AZ"
+    ],
+    "tier-3": [
+        "BE"
+    ]
+}

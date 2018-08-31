@@ -9,7 +9,19 @@ const run = (event, ctx, callback) => {
       new Error('Invalid event data, requires IP address')
     )
   } else {
-      callback(null, country.get(event.ip))
+    let geo = country.get(event.ip);
+
+    if (null != geo) {
+        callback(null, {
+            "country_code": geo.country ? geo.country.iso_code : null,
+            "country_name": geo.country ? geo.country.names.en : null
+        })
+    } else {
+        callback(
+            new Error('Invalid event data, requires correct IP address')
+        )
+    }
+
   }
 };
 

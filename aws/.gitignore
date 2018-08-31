@@ -1,5 +1,6 @@
 .serverless
 .DS_Store
 data/*.mmdb
+data/*.xml
 node_modules
 package-lock.json

@@ -1,11 +1,8 @@
 {
-  "name": "ip-country-discovery",
+  "name": "http-request-discovery",
   "version": "1.0.0",
   "description": "Testing aws lambda",
   "main": "index.js",
-  "dependencies": {
-    "maxmind": "2.7.0"
-  },
   "devDependencies": {
     "serverless": "^1.29"
   },
@@ -17,5 +14,10 @@
     "geoip"
   ],
   "author": "Vladimir Klymniuk",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "maxmind": "2.7.0",
+    "node": "8.10.0",
+    "node-expat": "2.3.17"
+  }
 }

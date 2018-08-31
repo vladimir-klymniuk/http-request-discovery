@@ -15,3 +15,11 @@ sls deploy
 cd project
 npm start
 ```
+
+
+# Supports:
+```text
+- Country code discovery by ip;
+- Exploring payment price tier for user by country code;
+- Device detection by user-agent using "Wurfl" library.
+```

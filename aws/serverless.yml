@@ -1,11 +1,11 @@
-service: serverless-geoip
+service: serverless-request-discovery
 
 provider:
   name: aws
   runtime: nodejs8.10
-  memorySize: 256
-  timeout: 30
-  region: eu-central-1
+  memorySize: 128
+  timeout: 10
+  region: eu-west-1
 
 package:
   exclude:
@@ -14,7 +14,7 @@ package:
     - package-lock.json
 
 functions:
-  lookup:
+  country:
     handler: src/country.run
     events:
       - http:
@@ -27,6 +27,40 @@ functions:
                 ip: true
             template:
               application/json: '{ "ip" : "$input.params(''ip'')" }'
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.json('$')
+  tier:
+    handler: src/tier.run
+    events:
+      - http:
+          method: GET
+          path: /tier/{countryCode}
+          integration: lambda
+          request:
+            parameters:
+              paths:
+                countryCode: true
+            template:
+              application/json: '{ "countryCode" : "$input.params(''countryCode'')" }'
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.json('$')
+  device:
+    handler: src/device.run
+    events:
+      - http:
+          method: GET
+          path: /device
+          integration: lambda
+          request:
+            parameters:
+              query:
+                userAgent: true
+            template:
+              application/json: '{ "userAgent" : "$input.query(''userAgent'')" }'
           response:
             headers:
               Content-Type: "'application/json'"

@@ -1,13 +1,18 @@
-import { Router } from "express";
-import asyncErrorHandler from "express-async-handler";
-import { countryLookup } from "../geo";
-
+import { Router } from "express"
+import asyncErrorHandler from "express-async-handler"
+import countryExplore from "../service/country"
+import CountryDTO from '../dto/location/country'
 const router = Router();
 
 router.get("/:ip", asyncErrorHandler(async function (req, res) {
     const ip = req.params.ip;
-    const info = await countryLookup(ip);
-    res.status(info ? 200 : 404).send(info);
+    const country = await countryExplore(ip);
+
+    if (null != country) {
+        res.status(200).send(new CountryDTO(country).response);
+    } else {
+        return res.status(404).send({});
+    }
 }));
 
-export default router;
+export default router
