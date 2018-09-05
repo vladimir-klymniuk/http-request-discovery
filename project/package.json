@@ -4,7 +4,11 @@
   "description": "Locale and device details provider.",
   "main": "server",
   "scripts": {
-    "test": "test"
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vklymniuk/http-request-discovery.git"
   },
   "author": "Vladimir Klymniuk",
   "license": "MIT",
